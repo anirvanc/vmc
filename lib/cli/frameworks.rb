@@ -6,17 +6,18 @@ module VMC::Cli
     DEFAULT_MEM = '256M'
 
     FRAMEWORKS = {
-      'Rails'    => ['rails3',  { :mem => '256M', :description => 'Rails Application'}],
-      'Spring'   => ['spring',  { :mem => '512M', :description => 'Java SpringSource Spring Application'}],
-      'Grails'   => ['grails',  { :mem => '512M', :description => 'Java SpringSource Grails Application'}],
-      'Lift'   =>   ['lift',    { :mem => '512M', :description => 'Scala Lift Application'}],
-      'JavaWeb'  => ['java_web',{ :mem => '512M', :description => 'Java Web Application'}],
-      'Sinatra'  => ['sinatra', { :mem => '128M', :description => 'Sinatra Application'}],
-      'Node'     => ['node',    { :mem => '64M',  :description => 'Node.js Application'}],
-      'PHP'      => ['php',     { :mem => '128M', :description => 'PHP Application'}],
-      'Erlang/OTP Rebar' => ['otp_rebar',  { :mem => '64M',  :description => 'Erlang/OTP Rebar Application'}],
-      'WSGI'     => ['wsgi',    { :mem => '64M',  :description => 'Python WSGI Application'}],
-      'Django'   => ['django',  { :mem => '128M', :description => 'Python Django Application'}],
+      'Rails'             => ['rails3',     { :mem => '256M', :description => 'Rails Application'}],
+      'Spring'            => ['spring',     { :mem => '512M', :description => 'Java SpringSource Spring Application'}],
+      'Grails'            => ['grails',     { :mem => '512M', :description => 'Java SpringSource Grails Application'}],
+      'Lift'              => ['lift',       { :mem => '512M', :description => 'Scala Lift Application'}],
+      'JavaWeb'           => ['java_web',   { :mem => '512M', :description => 'Java Web Application'}],
+      'Sinatra'           => ['sinatra',    { :mem => '128M', :description => 'Sinatra Application'}],
+      'Node'              => ['node',       { :mem => '64M',  :description => 'Node.js Application'}],
+      'PHP'               => ['php',        { :mem => '128M', :description => 'PHP Application'}],
+      'Erlang/OTP Rebar'  => ['otp_rebar',  { :mem => '64M',  :description => 'Erlang/OTP Rebar Application'}],
+      'WSGI'              => ['wsgi',       { :mem => '64M',  :description => 'Python WSGI Application'}],
+      'Django'            => ['django',     { :mem => '128M', :description => 'Python Django Application'}],
+      'Happstack'         => ['happstack',  { :mem => '128M', :description => 'Happstack Web Application'}]
     }
 
     class << self
@@ -98,7 +99,11 @@ module VMC::Cli
           # Python
           elsif !Dir.glob('wsgi.py').empty?
             return Framework.lookup('WSGI')
-
+            
+          # Happstack
+          elsif !Dir.glob('*.hs').empty?
+            return Framework.lookup('Happstack')
+             
           end
         end
         nil
