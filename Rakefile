@@ -1,5 +1,5 @@
 require 'rake'
-require 'spec/rake/spectask'
+#require 'spec/rake/spectask'
 
 desc "Run specs"
 task :spec => :build do
@@ -25,12 +25,13 @@ TESTS_PATH = tests_path
 
 BUILD_ARTIFACT = File.join(Dir.pwd, "spec/assets/.build")
 
-TESTS_TO_BUILD = ["#{TESTS_PATH}/java_web/java_tiny_app",
+#TESTS_TO_BUILD = ["#{TESTS_PATH}/java_web/java_tiny_app",
 #             "#{TESTS_PATH}/grails/guestbook",
-             "#{TESTS_PATH}/lift/hello_lift",
-             "#{TESTS_PATH}/spring/roo-guestbook",
-             "#{TESTS_PATH}/spring/spring-osgi-hello",
-            ]
+#             "#{TESTS_PATH}/lift/hello_lift",
+#             "#{TESTS_PATH}/spring/roo-guestbook",
+#             "#{TESTS_PATH}/spring/spring-osgi-hello",
+#            ]
+TESTS_TO_BUILD = []
 
 desc "Build the tests. If the git hash associated with the test assets has not changed, nothing is built. To force a build, invoke 'rake build[--force]'"
 task :build, [:force] do |t, args|
